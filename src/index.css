@@ -1,0 +1,225 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+.form-section {
+  width: 100%;
+  padding: 24px;
+  overflow-y: auto;
+  border-radius: 12px;
+  margin: 0 auto;
+}
+
+/* Preview 窗口样式 - 恢复到设置主题之前 */
+.preview-section {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 500px;
+  height: 700px;
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.preview-section.expanded {
+  width: 800px;
+  height: 100vh;
+  bottom: 0;
+  right: 24px;
+}
+
+.preview-card {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.preview-section.expanded .preview-card {
+  padding: 2rem;
+}
+
+/* Markdown preview styles */
+.preview-content {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+.preview-content h1, .preview-content h2, .preview-content h3, .preview-content h4, .preview-content h5, .preview-content h6 {
+  color: #333;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.25;
+}
+.preview-content h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.preview-content h2 {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 1rem;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.preview-content h3 {
+  font-size: 1.125rem;
+  margin: 1rem 0 0.5rem;
+  color: #333;
+}
+
+.preview-content p {
+  margin-bottom: 1rem;
+}
+
+.preview-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.preview-content li {
+  margin-bottom: 0.5rem;
+}
+
+.preview-content a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.preview-content a:hover {
+  text-decoration: underline;
+}
+
+.preview-content hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 1.5rem 0;
+}
+
+.preview-content img {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+  float: right;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+}
+
+.add-button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 24px 0 16px;
+  padding-bottom: 8px;
+}
+
+.item-card {
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.item-title {
+  font-weight: 500;
+}
+
+.skills-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .form-section {
+    width: 40%;
+  }
+  
+  .preview-section {
+    width: 60%;
+  }
+  
+  .preview-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .form-section,
+  .preview-section {
+    width: 100%;
+  }
+}
