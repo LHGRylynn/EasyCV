@@ -24,15 +24,11 @@
     </div>
     <div class="form-group">
       <label for="photo">个人照片</label>
-      <a-upload
-        name="avatar"
-        list-type="picture-card"
-        :before-upload="beforeUpload"
-        :show-upload-list="false"
-        @change="handlePhotoUpload"
-      >
-        <div v-if="localFormData.basic.photo" style="width: 100%; height: 100%;">
-          <img :src="localFormData.basic.photo" alt="个人照片" style="width: 100%; height: 100%; object-fit: cover;" />
+      <a-upload name="avatar" list-type="picture-card" :before-upload="beforeUpload" :show-upload-list="false"
+        @change="handlePhotoUpload">
+        <div v-if="localFormData.basic.photo" style="width: 100%; height: 100%; ">
+          <img :src="localFormData.basic.photo" alt="个人照片"
+            style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover;" />
         </div>
         <div v-else>
           <plus-outlined />
@@ -185,17 +181,18 @@ const beforeUpload = (file) => {
 
 // 处理照片上传
 const handlePhotoUpload = (info) => {
-  const file = info.file
-  if (file && file.originFileObj) {
+  const file = info.file;
+
+  if (file && (file instanceof File || file.name)) {
     const reader = new FileReader()
     reader.onload = (e) => {
-      localFormData.basic.photo = e.target.result
+      localFormData.value.basic.photo = e.target.result
       updateFormData()
     }
-    reader.readAsDataURL(file.originFileObj)
-  } else if (file && file.url) {
-    localFormData.basic.photo = file.url
-    updateFormData()
+
+    if (file instanceof File) {
+      reader.readAsDataURL(file)
+    }
   }
 }
 
