@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
       <label for="photo">个人照片</label>
-      <a-upload name="avatar" list-type="picture-card" :before-upload="beforeUpload" :show-upload-list="false"
+      <a-upload name="avatar" accept="image/*" list-type="picture-card" :before-upload="beforeUpload" :show-upload-list="false"
         @change="handlePhotoUpload">
         <div v-if="localFormData.basic.photo" style="width: 100%; height: 100%; ">
           <img :src="localFormData.basic.photo" alt="个人照片"
